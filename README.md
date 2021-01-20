@@ -18,6 +18,8 @@ That will look something like this<br>
 
 
 <h3>ESX.ShowNotification (if using esx)</h3>
+
+
 ```lua
 ESX.ShowNotification = function(type, message)
   exports["skeexsNotify"]:TriggerNotification({
