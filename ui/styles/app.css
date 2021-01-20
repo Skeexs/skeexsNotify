@@ -1,15 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,300&display=swap");
 * {
   padding: 0;
   margin: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  font-family: "Lato";
+  font-family: "Roboto", "Lato";
   overflow: hidden;
 }
 
 * #root {
   width: 100vw;
-  height: 98vh;
+  height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -32,39 +33,41 @@
   width: 320px;
   height: auto;
   margin: 3px;
-  background: #1f1f1f;
+  background: #161616ef;
   -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
           box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-radius: 0.5vh;
-  border: 1px solid rgba(255, 0, 85, 0.089);
+  border-left: 3px solid #ff005554;
 }
 
-* #root .main .notification #message {
-  margin: 0 auto;
-  font-size: 1em;
-}
-
-* #root .main .notification .loader svg {
-  width: 80px;
-  height: 80px;
-}
-
-* #root .main .notification .loader .cirlce {
-  stroke-width: 3px;
+* #root .main .notification .message {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  width: 90%;
+  padding: 1rem;
 }
 
 * #root .main .notification .type {
   color: #ff0055;
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 20%;
   height: 100%;
-  margin-right: 7px;
   font-size: 28px;
+  z-index: 1;
   padding: 1rem;
 }
 
@@ -80,6 +83,24 @@
 .fold {
   -webkit-animation: fold 2s ease;
           animation: fold 2s ease;
+}
+
+@-webkit-keyframes loading {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+@keyframes loading {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
 }
 
 @-webkit-keyframes fold {
