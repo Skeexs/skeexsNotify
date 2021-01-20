@@ -2,7 +2,7 @@
 FiveM notification script for roleplay servers
 
 
-<pre>How to use this script</pre>
+<h1>Documentation</h1>
 
 <p> There are different types: <b style="color: lightgreen">"success" </b> | <b style="color: lightblue">"info" </b> | <b style="color: red"> "error"</b> | <b style="color: lightpink"> "message" </b> | <b> "phone" </b> | <b> "bag" </b> </p>
 
