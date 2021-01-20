@@ -5,6 +5,10 @@ FiveM notification script for roleplay servers
 
 <h1>Documentation</h1>
 
+The first thing you need to do is to download the resource and start it in your <pre>server.cfg</pre>
+
+<pre>ensure skeexsNotify</pre>
+
 <p> There are different types: <b style="color: lightgreen">"success" </b> | <b style="color: lightblue">"info" </b> | <b style="color: red"> "error"</b> | <b style="color: lightpink"> "message" </b> | <b> "phone" </b> | <b> "bag" </b> </p>
 
 ```lua
