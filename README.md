@@ -21,7 +21,7 @@ That will look something like this<br>
 
 
 ```lua
-ESX.ShowNotification = function(type, message)
+ESX.ShowNotification = function(message, type)
   exports["skeexsNotify"]:TriggerNotification({
     ['type'] = type,
     ['message'] = message
@@ -36,5 +36,16 @@ end
 <img src="https://i.gyazo.com/8fdeb553ccdd1a3e95cf9e80b31055e3.png">
 <img src="https://i.gyazo.com/bc24adf07a103ed1fb9c8dce70320a43.png">
 
+
+If you want to edit the icons you can find the collection of icons at <br>
+https://icons.getbootstrap.com/
+
+or if you want to change the icons you can do that in the JS file like this <br>
+
+```js
+  ["iconname"]: {
+    ["icon"]: "bi bi-telephone-inbound",
+  },
+```
 
 Bablo hälsar!
