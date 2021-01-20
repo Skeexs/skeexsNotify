@@ -5,7 +5,7 @@ FiveM notification script for roleplay servers
 
 <h1>Documentation</h1>
 
-The first thing you need to do is to download the resource and start it in your <pre>server.cfg</pre>
+The first thing you need to do is to download the resource and start it in your server.cfg
 
 <pre>ensure skeexsNotify</pre>
 
