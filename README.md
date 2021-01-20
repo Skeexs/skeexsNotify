@@ -4,7 +4,7 @@ FiveM notification script for roleplay servers
 
 <pre>How to use this script</pre>
 
-<p> There are different types: <b>success </b> <b>info </b> <b> error</b>
+<p> There are different types: <b style="color: lightgreen">"success" </b> | <b style="color: lightblue">"info" </b> | <b style="color: red"> "error"</b> | <b style="color: lightpink"> "message" </b> | <b> "phone" </b> <b> "bag" </b> </p>
 
 ```lua
 exports["skeexsNotify"]:TriggerNotification({
