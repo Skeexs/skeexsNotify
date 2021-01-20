@@ -2,6 +2,7 @@
 FiveM notification script for roleplay servers
 
 
+
 <h1>Documentation</h1>
 
 <p> There are different types: <b style="color: lightgreen">"success" </b> | <b style="color: lightblue">"info" </b> | <b style="color: red"> "error"</b> | <b style="color: lightpink"> "message" </b> | <b> "phone" </b> | <b> "bag" </b> </p>
@@ -47,5 +48,8 @@ or if you want to change the icons you can do that in the JS file like this <br>
     ["icon"]: "bi bi-telephone-inbound",
   },
 ```
+
+Also in these notifications are you able to use the gta color codes<br>
+<pre>~g~, ~y~, ~s~, ~b~ etc</pre>
 
 Bablo hälsar!
