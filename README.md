@@ -18,7 +18,7 @@ That will look something like this<br>
 ![demo](https://i.gyazo.com/d412326400f69df6452c838e4281c5a4.png)
 
 
-<h3>ESX.ShowNotification (if using esx)</h3>
+<h3>ESX.ShowNotification example</h3>
 
 
 ```lua
