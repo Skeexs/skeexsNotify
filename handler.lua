@@ -4,10 +4,3 @@ function TriggerNotification(DATA)
         data = DATA
     })
 end
-
-RegisterCommand("r", function()
-    TriggerNotification({
-        type = "phone",
-        message = "Nya notificationer"
-    })
-end)
