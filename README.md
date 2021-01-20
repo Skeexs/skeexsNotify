@@ -17,6 +17,16 @@ That will look something like this<br>
 ![demo](https://i.gyazo.com/d412326400f69df6452c838e4281c5a4.png)
 
 
+<h3>ESX.ShowNotification (if using esx)</h3>
+```lua
+ESX.ShowNotification = function(type, message)
+  exports["skeexsNotify"]:TriggerNotification({
+    ['type'] = type,
+    ['message'] = message
+  })
+end
+```
+
 <h1>All of the available types:</h1>
 <img src="https://i.gyazo.com/8a634e691a9c855d5cfcfdcbbf14739a.png">
 <img src="https://i.gyazo.com/126825fc098aeda710fba3a420d1e079.png"> 
