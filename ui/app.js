@@ -42,13 +42,13 @@ const REPLACE_COLORCODES = (string, obj) => {
 $NOTIFICATION = function (DATA) {
   let id = $(`.notification`).length + 1;
 
-  for (COLOR in COLOR_CODES) {
-    if (DATA["Message"].includes(COLOR)) {
+  for (color in COLOR_CODES) {
+    if (DATA["Message"].includes(color)) {
       let objArray = {};
-      objArray[COLOR] = `<span style="color ${COLOR_CODES[COLOR]}">`;
+      objArray[color] = `<span style="color: ${COLOR_CODES[color]}">`;
       objArray["~s~"] = `</span>`;
 
-      newString = REPLACE_COLORCODES(DATA["Message"], objArray);
+      let newString = REPLACE_COLORCODES(DATA["Message"], objArray);
 
       DATA["Message"] = newString;
     }
@@ -60,7 +60,7 @@ $NOTIFICATION = function (DATA) {
             <i class="${$TYPES[DATA.TYPE]["icon"]}"></i>
         </div>
 
-        <div class="message"><small style="font-size: 12px;">Notifikation</small><br>${
+        <div class="message"><small style="font-size: 12px;">New notification</small><br>${
           DATA["Message"]
         }</div>
     </div>`
