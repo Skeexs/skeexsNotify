@@ -14,7 +14,7 @@ The first thing you need to do is to download the resource and start it in your 
 ```lua
 exports["skeexsNotify"]:TriggerNotification({
   ['type'] = "success",
-  ['text'] = 'This is a showoff notification
+  ['message'] = 'This is a showoff notification
 })
 ```
 
