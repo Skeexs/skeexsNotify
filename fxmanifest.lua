@@ -3,6 +3,8 @@ game 'gta5'
 
 ui_page 'ui/ui.html'
 
+lua54 'yes'
+
 files {
     'ui/app.js',
     'ui/ui.html',
@@ -10,5 +12,3 @@ files {
 }
 
 client_script 'handler.lua'
-
-export 'TriggerNotification'

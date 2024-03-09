@@ -1,25 +1,20 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,300&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,300&display=swap');
 * {
   padding: 0;
   margin: 0;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  font-family: "Roboto", "Lato";
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
   overflow: hidden;
 }
 
 * #root {
   width: 100vw;
   height: 100vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px;
 }
 
 * #root .main .notification {
@@ -28,16 +23,17 @@
   display: flex;
   color: white;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 320px;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 360px;
   height: auto;
   margin: 3px;
-  background: #161616ef;
+  padding: 0.5rem;
+  background: #000000ef;
   -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-radius: 0.5vh;
-  border-left: 3px solid #ff005554;
+  border: 2.5px solid #ff005554;
 }
 
 * #root .main .notification .message {
@@ -46,29 +42,30 @@
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-flow: column;
-          flex-flow: column;
+  -ms-flex-flow: column;
+  flex-flow: column;
   width: 90%;
-  padding: 1rem;
+  padding: 0.5rem;
+
+  & span {
+    font-size: 0.8rem;
+    font-weight: 400;
+    margin-top: 0.2rem;
+  }
 }
 
 * #root .main .notification .type {
   color: #ff0055;
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+
+  justify-content: center;
+  align-items: start;
+
   width: 20%;
   height: 100%;
-  font-size: 28px;
   z-index: 1;
-  padding: 1rem;
+
+  font-size: x-large;
 }
 
 #hej {
@@ -77,12 +74,17 @@
 
 .unfold {
   -webkit-animation: unfold 10s ease;
-          animation: unfold 10s ease;
+  animation: unfold 10s ease;
+}
+
+.title {
+  color: #ff0055ae;
+  font-size: 1.5rem;
 }
 
 .fold {
   -webkit-animation: fold 2s ease;
-          animation: fold 2s ease;
+  animation: fold 2s ease;
 }
 
 @-webkit-keyframes loading {
@@ -106,30 +108,30 @@
 @-webkit-keyframes fold {
   0% {
     opacity: 0.8;
-    -webkit-transform: scaleY(1);
-            transform: scaleY(1);
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
   }
   6%,
   20%,
   80% {
     opacity: 0;
-    -webkit-transform: scaleY(0);
-            transform: scaleY(0);
+    -webkit-transform: translateX(50%);
+    transform: translateX(50%);
   }
 }
 
 @keyframes fold {
   0% {
     opacity: 0.8;
-    -webkit-transform: scaleY(1);
-            transform: scaleY(1);
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
   }
   6%,
   20%,
   80% {
     opacity: 0;
-    -webkit-transform: scaleY(0);
-            transform: scaleY(0);
+    -webkit-transform: translateX(50%);
+    transform: translateX(50%);
   }
 }
 
@@ -137,14 +139,14 @@
   0% {
     opacity: 0;
     -webkit-transform: translateX(50%);
-            transform: translateX(50%);
+    transform: translateX(50%);
   }
   6%,
   20%,
   80% {
     opacity: 1;
     -webkit-transform: translateX(0);
-            transform: translateX(0);
+    transform: translateX(0);
   }
 }
 
@@ -152,14 +154,14 @@
   0% {
     opacity: 0;
     -webkit-transform: translateX(50%);
-            transform: translateX(50%);
+    transform: translateX(50%);
   }
   6%,
   20%,
   80% {
     opacity: 1;
     -webkit-transform: translateX(0);
-            transform: translateX(0);
+    transform: translateX(0);
   }
 }
 /*# sourceMappingURL=app.css.map */

@@ -1,85 +1,98 @@
 const $TYPES = {
-  ["success"]: {
-    ["icon"]: "bi bi-check2-circle",
+  ['success']: {
+    ['icon']: 'bi bi-check2-circle',
   },
-  ["error"]: {
-    ["icon"]: "bi bi-exclamation-circle",
+  ['error']: {
+    ['icon']: 'bi bi-exclamation-circle',
+    prefix: '~r~',
   },
-  ["info"]: {
-    ["icon"]: "bi bi-bell",
+  ['info']: {
+    ['icon']: 'bi bi-bell',
+    prefix: '~lb~',
   },
-  ["bag"]: {
-    ["icon"]: "bi bi-bag",
+  ['bag']: {
+    ['icon']: 'bi bi-bag',
+    prefix: '~lg~',
   },
-  ["message"]: {
-    ["icon"]: "bi bi-chat-square-text",
+  ['message']: {
+    ['icon']: 'bi bi-chat-square-text',
+    prefix: '~w~',
   },
-  ["phone"]: {
-    ["icon"]: "bi bi-telephone-inbound",
+  ['phone']: {
+    ['icon']: 'bi bi-telephone-inbound',
+    prefix: '~w~',
   },
-};
+}
 
 const COLOR_CODES = {
-  "~g~": "green",
-  "~r~": "red",
-  "~y~": "yellow",
-  "~b~": "blue",
-  "~lb~": "lightblue",
-  "~lg~": "lightgreen",
-  "~w~": "white",
-};
+  '~g~': 'green',
+  '~r~': 'red',
+  '~y~': 'yellow',
+  '~b~': 'blue',
+  '~lb~': 'lightblue',
+  '~lg~': 'lightgreen',
+  '~w~': 'white',
+}
 
 const REPLACE_COLORCODES = (string, obj) => {
-  let stringToReplace = string;
+  let stringToReplace = string
 
   for (let id in obj) {
-    stringToReplace = stringToReplace.replace(new RegExp(id, "g"), obj[id]);
+    stringToReplace = stringToReplace.replace(new RegExp(id, 'g'), obj[id])
   }
 
-  return stringToReplace;
-};
+  return stringToReplace
+}
 
-$NOTIFICATION = function (DATA) {
-  let id = $(`.notification`).length + 1;
+$NOTIFICATION = function (data = {}) {
+  let id = $(`.notification`).length + 1
 
   for (color in COLOR_CODES) {
-    if (DATA["Message"].includes(color)) {
-      let objArray = {};
-      objArray[color] = `<span style="color: ${COLOR_CODES[color]}">`;
-      objArray["~s~"] = `</span>`;
+    if (data.Message.includes(color)) {
+      let objArray = {}
+      objArray[color] = `<span style="color: ${COLOR_CODES[color]}">`
+      objArray['~s~'] = `</span>`
 
-      let newString = REPLACE_COLORCODES(DATA["Message"], objArray);
+      let newString = REPLACE_COLORCODES(data.Message, objArray)
 
-      DATA["Message"] = newString;
+      data.Message = newString
     }
   }
 
   let $notification = $(
     `<div class="notification unfold" id="${id}">
         <div class="type">
-            <i class="${$TYPES[DATA.TYPE]["icon"]}"></i>
+            <i
+                class="${$TYPES[data.TYPE]['icon']}"
+                style="font-size: 35px;"
+            ></i>
         </div>
 
-        <div class="message"><small style="font-size: 12px;">New notification</small><br>${
-          DATA["Message"]
-        }</div>
-    </div>`
-  ).appendTo(`.main`);
+        <div class="message">
+            <small class="title" style="font-size: 12px;">
+                ${data.title ?? 'Notification'}
+            </small>
+            <span>${data.Message ?? 'You have a new notification'}</span>
+        </div>
+    </div>`,
+  ).appendTo(`.main`)
 
   setTimeout(() => {
-    $notification.addClass("fold").fadeOut(700);
-  }, 10000);
+    $notification.addClass('fold').fadeOut(700)
+  }, data.Timeout ?? 5000)
 
-  return $notification;
-};
+  return $notification
+}
 
 $(function () {
-  window.addEventListener("message", function (event) {
-    if (event.data.createNew === true) {
+  window.addEventListener('message', function (event) {
+    if (event.data.createNew) {
       $NOTIFICATION({
-        TYPE: event.data.data.type,
-        Message: event.data.data.message,
-      });
+        TYPE: event.data.TYPE,
+        Message: event.data.Message,
+        title: event.data.title,
+        Timeout: event.data.Timeout,
+      })
     }
-  });
-});
+  })
+})
