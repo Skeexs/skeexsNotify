@@ -10,7 +10,8 @@ function sendNotification(data)
     local _data <const> = {
         message = data.message,
         type = data.type or 'info',
-        duration = data.duration or 5000
+        duration = data.timeout or 5000,
+        title = data.title or 'Notification',
     }
 
     if USE_SOUND then

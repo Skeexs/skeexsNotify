@@ -86,12 +86,14 @@ $NOTIFICATION = function (data = {}) {
 
 $(function () {
   window.addEventListener('message', function (event) {
-    if (event.data.createNew) {
+    const { createNew, data } = event.data
+
+    if (createNew) {
       $NOTIFICATION({
-        TYPE: event.data.TYPE,
-        Message: event.data.Message,
-        title: event.data.title,
-        Timeout: event.data.Timeout,
+        TYPE: data.type,
+        Message: data.message,
+        title: data.title,
+        Timeout: data.timeout,
       })
     }
   })
