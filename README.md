@@ -4,6 +4,8 @@
 
 <p>
     <b>FiveM notification script for roleplay servers</b>
+    <br>
+    <a href="https://discord.gg/Frxv6uPCFN">Skeexs Inc. Discord Server</a>
 </p>
 
 <h2>Documentation for you server owners</h2>
@@ -55,7 +57,4 @@
 
 <h3>ALL THE ICONS NEED TO BE FROM BOOTSTRAP</h3>
 <a href="https://icons.getbootstrap.com/">Bootstrap Icons</a>
-
-<footer>
-    <p>Created by Skeexs</p>
-</footer>
+<br/>
