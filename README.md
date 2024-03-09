@@ -15,7 +15,7 @@
 
 ```lua
     ESX.ShowNotification = function(message, type, options)
-        if GetResourceState("skeexs_notify") ~= "started" then
+        if GetResourceState("skeexsNotify") ~= "started" then
             print("skeexsNotify is not started")
             return
         end
