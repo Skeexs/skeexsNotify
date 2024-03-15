@@ -55,6 +55,29 @@
     },
 ```
 
-<h3>ALL THE ICONS NEED TO BE FROM BOOTSTRAP</h3>
+<h3>Icons</h3>
+
+<H5>ALL THE ICONS NEED TO BE FROM BOOTSTRAP</H5>
 <a href="https://icons.getbootstrap.com/">Bootstrap Icons</a>
 <br/>
+
+<h2>Events</h2>
+<p>There are 2 events you can use to send notifications to the client</p>
+
+```lua
+    TriggerClientEvent("skeexsNotify:sendNotification", source, {
+        type = "info",
+        message = "This is a notification",
+        title = "Notification",
+        timeout = 5000
+    })
+```
+
+```lua
+    exports.skeexsNotify:sendNotification({
+        type = "info",
+        message = "This is a notification",
+        title = "Notification",
+        timeout = 5000
+    })
+```
