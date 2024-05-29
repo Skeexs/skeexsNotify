@@ -73,12 +73,18 @@ function createNotification(data = {}) {
   Object.entries(color_codes).forEach(([color, value]) => {
     if (!data.message.includes(color)) return console.log('No color found')
 
-    let stringColors = {}
+    let stringModifiers = {}
 
-    stringColors[color] = `<span style="color: ${value}">`
-    stringColors['~s~'] = `</span>`
+    if (data.message.includes(color_codes['~h~'])) {
+      stringModifiers[
+        color
+      ] = `<span style="font-weight: bold; color: ${value}">`
+    } else {
+      stringModifiers[color] = `<span style="color: ${value}">`
+    }
 
-    data.message = replace_colorMappings(data.message, stringColors)
+    stringModifiers['~s~'] = `</span>`
+    data.message = replace_colorMappings(data.message, stringModifiers)
   })
 
   let notification_template = $(

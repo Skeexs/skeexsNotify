@@ -1,11 +1,7 @@
 local USE_SOUND <const> = false -- Set to true if you want to use sound for notifications
 
--- @param data: {
---     message = string,
---     type = string,
---     duration = int
--- }
--- @return void
+--- @param data: table<{ message = string, type = string, duration = int }>
+--- @return void
 function sendNotification(data)
     local _data <const> = {
         message = data.message,
@@ -24,7 +20,7 @@ function sendNotification(data)
     })
 end
 
--- Event To Send Notification
+-- ? Event To Send Notification
 RegisterNetEvent("skeexsNotify:sendNotify", function(data)
     sendNotification(data)
 end)
