@@ -35,36 +35,52 @@ const color_map = {
   grey: 'grey',
   darkerGrey: 'darkgrey',
   black: 'black',
-  newLine: '\n', // assuming this is meant to indicate a newline
-  defaultWhite: 'white', // assuming default white means white
+  newLine: '\n',
+  defaultWhite: 'white',
   white: 'white',
-  boldText: 'bold', // assuming this means text should be bold
+  boldText: 'bold',
 }
+
 const color_codes = {
-  '~r~': colorMappings.red,
-  '~b~': colorMappings.blue,
-  '~g~': colorMappings.green,
-  '~y~': colorMappings.yellow,
-  '~p~': colorMappings.purple,
-  '~q~': colorMappings.pink,
-  '~o~': colorMappings.orange,
-  '~c~': colorMappings.grey,
-  '~m~': colorMappings.darkerGrey,
-  '~u~': colorMappings.black,
-  '~n~': colorMappings.newLine,
-  '~s~': colorMappings.defaultWhite,
-  '~w~': colorMappings.white,
-  '~h~': colorMappings.boldText,
+  '~r~': color_map.red,
+  '~b~': color_map.blue,
+  '~g~': color_map.green,
+  '~y~': color_map.yellow,
+  '~p~': color_map.purple,
+  '~q~': color_map.pink,
+  '~o~': color_map.orange,
+  '~c~': color_map.grey,
+  '~m~': color_map.darkerGrey,
+  '~u~': color_map.black,
+  '~n~': color_map.newLine,
+  '~s~': color_map.defaultWhite,
+  '~w~': color_map.white,
+  '~h~': color_map.boldText,
 }
 
-function replace_colorMappings(string, obj) {
-  let stringToReplace = string
+function applyFancyHighlighting(message) {
+  let parts = message.split('~h~')
 
-  for (let id in obj) {
-    stringToReplace = stringToReplace.replace(new RegExp(id, 'g'), obj[id])
-  }
+  let highlightedMessage = parts
+    .map((part, index) => {
+      if (index % 2 !== 0) {
+        let color = colors[index % colors.length]
+        let style =
+          index % 4 === 1 ? 'font-weight: bold;' : 'font-style: italic;'
+        return `<span style="${style} color: ${color}">${part}</span>`
+      }
+      return part
+    })
+    .join('')
 
-  return stringToReplace
+  return highlightedMessage
+}
+
+function replace_colorMappings(message, stringModifiers) {
+  Object.entries(stringModifiers).forEach(([key, value]) => {
+    message = message.split(key).join(value)
+  })
+  return message
 }
 
 function createNotification(data = {}) {
@@ -79,11 +95,11 @@ function createNotification(data = {}) {
       stringModifiers[
         color
       ] = `<span style="font-weight: bold; color: ${value}">`
-    } else {
-      stringModifiers[color] = `<span style="color: ${value}">`
     }
 
-    stringModifiers['~s~'] = `</span>`
+    // stringModifiers[color] = `<span style="color: ${value}">`
+    // stringModifiers['~s~'] = `</span>`
+
     data.message = replace_colorMappings(data.message, stringModifiers)
   })
 
