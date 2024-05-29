@@ -1,4 +1,4 @@
-const $TYPES = {
+const notification_types = {
   ['success']: {
     ['icon']: 'bi bi-check2-circle',
   },
@@ -24,17 +24,40 @@ const $TYPES = {
   },
 }
 
-const COLOR_CODES = {
-  '~g~': 'green',
-  '~r~': 'red',
-  '~y~': 'yellow',
-  '~b~': 'blue',
-  '~lb~': 'lightblue',
-  '~lg~': 'lightgreen',
-  '~w~': 'white',
+const color_map = {
+  red: 'red',
+  blue: 'blue',
+  green: 'green',
+  yellow: 'yellow',
+  purple: 'purple',
+  pink: 'pink',
+  orange: 'orange',
+  grey: 'grey',
+  darkerGrey: 'darkgrey',
+  black: 'black',
+  newLine: '\n', // assuming this is meant to indicate a newline
+  defaultWhite: 'white', // assuming default white means white
+  white: 'white',
+  boldText: 'bold', // assuming this means text should be bold
+}
+const color_codes = {
+  '~r~': colorMappings.red,
+  '~b~': colorMappings.blue,
+  '~g~': colorMappings.green,
+  '~y~': colorMappings.yellow,
+  '~p~': colorMappings.purple,
+  '~q~': colorMappings.pink,
+  '~o~': colorMappings.orange,
+  '~c~': colorMappings.grey,
+  '~m~': colorMappings.darkerGrey,
+  '~u~': colorMappings.black,
+  '~n~': colorMappings.newLine,
+  '~s~': colorMappings.defaultWhite,
+  '~w~': colorMappings.white,
+  '~h~': colorMappings.boldText,
 }
 
-const REPLACE_COLORCODES = (string, obj) => {
+function replace_colorMappings(string, obj) {
   let stringToReplace = string
 
   for (let id in obj) {
@@ -44,22 +67,21 @@ const REPLACE_COLORCODES = (string, obj) => {
   return stringToReplace
 }
 
-$NOTIFICATION = function (data = {}) {
-  let id = $(`.notification`).length + 1
+function createNotification(data = {}) {
+  let id = Math.floor(Math.random() * 1000000)
 
-  for (color in COLOR_CODES) {
-    if (data.Message.includes(color)) {
-      let objArray = {}
-      objArray[color] = `<span style="color: ${COLOR_CODES[color]}">`
-      objArray['~s~'] = `</span>`
+  Object.entries(color_codes).forEach(([color, value]) => {
+    if (!data.message.includes(color)) return console.log('No color found')
 
-      let newString = REPLACE_COLORCODES(data.Message, objArray)
+    let stringColors = {}
 
-      data.Message = newString
-    }
-  }
+    stringColors[color] = `<span style="color: ${value}">`
+    stringColors['~s~'] = `</span>`
 
-  let $notification = $(
+    data.message = replace_colorMappings(data.message, stringColors)
+  })
+
+  let notification_template = $(
     `<div class="notification unfold" id="${id}">
         <div class="type">
             <i
@@ -72,16 +94,16 @@ $NOTIFICATION = function (data = {}) {
             <small class="title" style="font-size: 12px;">
                 ${data.title ?? 'Notification'}
             </small>
-            <span>${data.Message ?? 'You have a new notification'}</span>
+            <span>${data.message ?? 'You have a new notification'}</span>
         </div>
     </div>`,
   ).appendTo(`.main`)
 
   setTimeout(() => {
-    $notification.addClass('fold').fadeOut(700)
-  }, data.Timeout ?? 5000)
+    notification_template.addClass('fold').fadeOut(700)
+  }, data.timeout ?? 5000)
 
-  return $notification
+  return notification_template
 }
 
 $(function () {
@@ -89,12 +111,7 @@ $(function () {
     const { createNew, data } = event.data
 
     if (createNew) {
-      $NOTIFICATION({
-        TYPE: data.type,
-        Message: data.message,
-        title: data.title,
-        Timeout: data.timeout,
-      })
+      createNotification(data)
     }
   })
 })
